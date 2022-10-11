@@ -1,0 +1,206 @@
+<div class="row g-2">
+    <div class="col">
+      <div class="transaction-metrics-container">
+        <div class="row transaction-metrics">
+          <div class="col-8">
+            <span class="metrics-text">Daily Transaction Volume</span> <br>
+            <span class="metrics-figure">2,342</span>
+          </div>
+          <div class="col-4">
+            <img src="../../../assets/images/small chart.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="transaction-metrics-container">
+        <div class="row transaction-metrics">
+          <div class="col-8">
+            <span class="metrics-text">Daily Transaction Value</span> <br>
+            <span class="metrics-figure">₦4,000,000</span>
+          </div>
+          <div class="col-4">
+            <img src="../../../assets/images/small chart.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="transaction-metrics-container">
+        <div class="row transaction-metrics">
+          <div class="col-8">
+            <span class="metrics-text">Total Transaction Volume</span> <br>
+            <span class="metrics-figure">452,000</span>
+          </div>
+          <div class="col-4">
+            <img src="../../../assets/images/small chart.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="transaction-metrics-container">
+        <div class="row transaction-metrics">
+          <div class="col-8">
+            <span class="metrics-text">Total Transaction Value</span> <br>
+            <span class="metrics-figure">₦4,000,000</span>
+          </div>
+          <div class="col-4">
+            <img src="../../../assets/images/small chart.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row g-1">
+  <div class="col-8">
+    <div class="metrics-data-container ">
+      <div class="metrics-data-header">
+        <div class="row">
+          <div class="col-7">
+            <div class="left">
+              <span class="metrics-header">
+                Today: 5, Aug 2018
+              </span>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="right">
+              <div class="row">
+                <div class="col">
+                  <input class="metrics-date-input" type="date" placeholder="1 Jan - 1 Jun">
+                </div>
+                <div class="col metrics-data-icons">
+                  <img class="metrics-arrow-icon" src="../../../assets/icons/Left Button.png" alt="<">
+                  <img class="metrics-arrow-icon" src="../../../assets/icons/Right Button.png" alt="<">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="metrics-data-body">
+        <div class="metrics-graph">
+          <div class="row">
+            <div class="col text-center">Jan</div>
+            <div class="col text-center">Feb</div>
+            <div class="col text-center">Mar</div>
+            <div class="col text-center">Apr</div>
+            <div class="col text-center">May</div>
+            <div class="col text-center">Jun</div>
+          </div>
+      </div>
+      </div>
+        
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="metrics-data-container">
+      <div class="inner">
+        <p class="text-bold mb-2">Orders</p>
+        <div class="metrics-data-border">
+          <div class="green"></div>
+          <div class="yellow"></div>
+        </div>
+        <p class="mt-2">Pending Orders: <span class="text-yellow">20</span></p>
+        <p class="mt-2">Reconciled Orders: <span class="text-green">80</span></p>
+        <p class="mt-2">Total Orders: <span class="text-blue">80</span></p>
+      </div>
+      <div class="inner mt-1">
+        <p class="text-bold mb-2">Orders</p>
+        <div class="metrics-data-border">
+          <div class="green"></div>
+          <div class="yellow"></div>
+        </div>
+        <p class="mt-2">Pending Orders: <span class="text-yellow">20</span></p>
+        <p class="mt-2">Reconciled Orders: <span class="text-green">80</span></p>
+        <p class="mt-2">Total Orders: <span class="text-blue">80</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <h2>Payments</h2>
+  <div class="payments-metrics">
+
+    <div class="payments-metrics-size">
+      <label for="cars">Showing: </label>
+      <select class="input-metrics" name="metrics" [(ngModel)]="numberOfItems" (onchange)="getTodos()">
+        <option>10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select> 
+      <p>out of 200</p>
+    </div>
+
+    <div class="payment-metrics-search">
+      <input class="input" [(ngModel)]="searchString" name="title" type="text" placeholder="Search Payments">
+    </div>
+
+    <div class="payments-metrics-filter">
+      <label for="cars">Show: </label>
+      <select class="input-filter" name="metrics" [(ngModel)]="searchString">
+        <option value="">All</option>
+        <option value="true">Reconciled</option>
+        <option value="false">Un-Reconciled</option>
+        <option value="Settled">Settled</option>
+        <option value="Unsettled">Unsettled</option>
+      </select> 
+    </div>
+
+  </div>
+
+  <div class="payment-table">
+    <table class="table table-borderless mt-3">
+      <thead class="thead-light">
+        <tr>
+          <td scope="col">Item Type</td>
+          <td scope="col">Price</td>
+          <td scope="col">Transaction No</td>
+          <td scope="col">Time</td>
+          <td scope="col"></td>
+          <td scope="col"></td>
+        </tr>
+      </thead>
+      <tbody>
+
+        
+        <tr *ngFor="let todo of todos | search:searchString  | paginate:{ itemsPerPage: numberOfItems, currentPage: p}">
+          <td class="d-flex align-items-center">
+            <span class="payment-table-icon mr-2">{{todo.title | truncate:2}}</span>
+            <span class="divider"></span>
+            <span class="ml-2">{{todo.title | truncate:25}}</span>
+          </td>
+          <td>$73430</td>
+          <td>1234567890</td>
+          <td>12:30</td>
+          <td>
+            <div class="reconciled" *ngIf="todo.completed === true">
+              <span><img src="../../../assets/icons/reconsiled.png" alt=""></span>
+              <span class="divider-sm"></span>
+              <span>Reconciled</span>
+            </div>
+            <div class="pending" *ngIf="todo.completed === false">
+              <span><img src="../../../assets/icons/pending.png" alt=""></span>
+              <span class="divider-sm"></span>
+              <span>Un-Reconciled</span>
+            </div>
+          </td>
+          <td>
+            <img src="../../../assets/icons/down-arrow.png" alt="">
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="pagination">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

@@ -1,0 +1,25 @@
+app-top-bar {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+.body {
+  margin-top: 60px;
+  display: flex;
+  background-color: #EAEEF0;
+}
+
+.layout-left {
+  position: fixed;
+  width: 260px;
+  height: calc(100vh - 60px);
+  background-color: #ffff;
+}
+
+
+.layout-right {
+  margin-left: 260px;
+  flex: 1;
+  padding: 30px;
+}
